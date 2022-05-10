@@ -42,7 +42,7 @@
 #modal__window {
     position: relative;
     top: 30%;
-    width: 30%;
+    width: 80%;
     margin: 0 auto;
     padding: 5px 20px 20px;
     background-color: #f8f6f6;
@@ -83,5 +83,9 @@ button:active {
   button {
     min-width: 100px;
     font-size: 20pt;
-}
+  }
+
+  #modal__window {
+    width: 30%;
+  }
 }
