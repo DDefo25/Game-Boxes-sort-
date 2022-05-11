@@ -91,6 +91,10 @@ button:active {
     font-size: 20pt;
   }
 
+  .focus {
+    border-width: 5px;
+  }
+  
   #modal__window {
     width: 40%;
   }
