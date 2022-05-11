@@ -56,6 +56,7 @@ function startGame() {
 };
 
 function resetStartCondition() {
+  clearBoard();
   board = [];
   colorsInGame = [];
 };
@@ -93,7 +94,6 @@ function neighborNextCheck (row, column) {
 
 //вызывается по клику на занятую ячейку и копирует в буфер (cellCopy)
 function clickBusyCell (row, column) {
-  console.log(cellCopy);
   if (cellCopy.value === '' && neighborNextCheck(row, column)) {
     cellCopy.value = board[row][column];
     cellCopy.coordinatesOfCopyCell = [row, column];
@@ -101,12 +101,10 @@ function clickBusyCell (row, column) {
     cellCopy.value = '';
     cellCopy.coordinatesOfCopyCell = [];
   };
-  console.log(cellCopy);
 };
 
 //вызывается по клику на пустую ячейку и вставляет из буфера(cellCopy) значение
 function clickFreeCell(row, column) {
-  console.log(cellCopy);
   let {value, coordinatesOfCopyCell: [rowCopied, columnCopied]} = cellCopy;
   if (value !== '' && neighborPreviousCheck(row, column)) {
     board[row][column] = value;
@@ -117,7 +115,6 @@ function clickFreeCell(row, column) {
     cellCopy.value = '';
     cellCopy.coordinatesOfCopyCell = [];
   };
-  console.log(cellCopy);
 };
 
 //проверка доски на победу

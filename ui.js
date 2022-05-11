@@ -47,23 +47,26 @@ function showWin() {
   let header = modalEl.getElementsByTagName('h2')[0];
   header.textContent = `🍾 Вы победили! 🍾`;
   modalEl.classList.remove('hidden');
-}
+};
 
 
 
 function renderBoard(board) {
-  const fields = [];
   for (let [i, row] of board.entries()) {
-    for (let [j, value] of row.entries()) { 
-      fields.push(`
-        <div class="field ${value ? 'busy' : 'free'}" 
-            data-col="${i}" 
-            data-row="${j}"
-            style="grid-column:${i + 1};grid-row:${row.length - j}; background-color:${value}"
-        >
-        </div>
-      `);
-    }
-  }
-  boardEl.innerHTML = fields.join('');
-}
+    for (let [j, value] of row.entries()) {
+      const busyness = value ? 'busy' : 'free';
+      const field = document.createElement('div')
+      field.className = `field ${busyness}`;
+      field.dataset.col = i;
+      field.dataset.row = j;
+      field.style.gridColumn = i + 1;
+      field.style.gridRow = row.length - j; 
+      field.style.backgroundColor = value;
+      boardEl.append(field);
+    };
+  };
+};
+
+function clearBoard() {
+  boardEl.innerHTML = '';
+};
