@@ -5,7 +5,6 @@
     text-align: center;
 }
 
-
 #board {
     position: relative;
     height: 95vw;
@@ -26,17 +25,23 @@
 }
 
 .field:hover {
-  border-style: solid;
-  border-color: rgba(90, 137, 158, 0.5);
+    border-style: solid;
+    border-color: rgba(165, 210, 240, 0.5);
+}
+
+.focus {
+    border-style: solid;
+    border-color: rgba(94, 183, 242, 0.9);  
 }
 
 #modal {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 #modal__window {
@@ -70,6 +75,7 @@ button:active {
     background-color: #ebf7ff;
 }
 
+
 .hidden {
     display: none;
 }
@@ -86,6 +92,6 @@ button:active {
   }
 
   #modal__window {
-    width: 30%;
+    width: 40%;
   }
 }

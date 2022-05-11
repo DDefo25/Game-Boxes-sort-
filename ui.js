@@ -1,31 +1,22 @@
 window.addEventListener('load', startGame);
 
-let boardEl = document.getElementById('board');
-let modalEl = document.getElementById('modal');
-let resetButtons = document.getElementsByClassName('reset');
+const boardEl = document.getElementById('board');
+const modalEl = document.getElementById('modal');
+const resetButtons = document.getElementsByClassName('button__reset');
+const difficultButtons = document.getElementsByClassName('button__difficult');
 
-let easyButton = document.getElementsByClassName('easy');
-let mediumButton = document.getElementsByClassName('medium');
-let hardButton = document.getElementsByClassName('hard');
-
-
-for (let btn of easyButton) {
+for (let btn of difficultButtons) {
   btn.addEventListener('click', function() {
-    difficult = 1;
-    startGame();
-  });
-};
-
-for (let btn of mediumButton) {
-  btn.addEventListener('click', function() {
-    difficult = 2;
-    startGame();
-  });
-};
-
-for (let btn of hardButton) {
-  btn.addEventListener('click', function() {
-    difficult = 3;
+    switch (btn.id) {
+      case 'hard':
+        difficult = 3;
+        break;
+      case 'medium':
+        difficult = 2;
+        break;
+      default:
+        difficult = 1;
+    };
     startGame();
   });
 };
@@ -48,6 +39,7 @@ boardEl.addEventListener('click', function(event) {
     if (isWin(board) === true) showWin();
   } else if (targetClasses.contains('field') && targetClasses.contains('busy')) {
     clickBusyCell(targetData.col, targetData.row);
+    if (cellCopy.value !== '') event.target.classList.add('focus');
   };
 });
 
@@ -56,6 +48,8 @@ function showWin() {
   header.textContent = `🍾 Вы победили! 🍾`;
   modalEl.classList.remove('hidden');
 }
+
+
 
 function renderBoard(board) {
   const fields = [];
