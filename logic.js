@@ -21,13 +21,13 @@ function boardDifficult (board, colors, difficult) {
   let rows, columns, colorsAmount;
   switch (difficult) {
     case 3: 
-      rows = 8;
-      columns = 10;
+      rows = 6;
+      columns = 7;
       colorsAmount = 5;
       break
     case 2: 
-      rows = 6;
-      columns = 7;
+      rows = 5;
+      columns = 6;
       colorsAmount = 4;
       break
     default:
