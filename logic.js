@@ -82,13 +82,18 @@ function randomFill(board) {
 //проверка предыдущей ячейки (нижний сосед на доске) на наличие значения, границу доски и отличие от этого же ряда (столба доски)
 function neighborPreviousCheck (row, column) {
   let {value, coordinatesOfCopyCell: [rowCopied, columnCopied]} = cellCopy;
-  if (board[row][+column - 1] === value && row !== rowCopied || board[row][+column - 1] === undefined) return true;
+  let neighborIsFit = board[row][+column - 1] === value
+    && row !== rowCopied
+    || board[row][+column - 1] === undefined;
+  if (neighborIsFit) return true;
   else return false;
 };
 
 //проверка следущей ячейки (верхний сосед на доске) на пустоту или границу доски
 function neighborNextCheck (row, column) {
-  if (board[row][+column + 1] === '' || board[row][+column + 1] === undefined) return true;
+  let neighborIsFit = board[row][+column + 1] === ''
+    || board[row][+column + 1] === undefined;
+  if (neighborIsFit) return true;
   else return false;
 };
 
@@ -97,7 +102,7 @@ function clickBusyCell (row, column) {
   if (cellCopy.value === '' && neighborNextCheck(row, column)) {
     cellCopy.value = board[row][column];
     cellCopy.coordinatesOfCopyCell = [row, column];
-  } else if (cellCopy.value !== '') {
+  } else {
     cellCopy.value = '';
     cellCopy.coordinatesOfCopyCell = [];
   };

@@ -39,7 +39,9 @@ boardEl.addEventListener('click', function(event) {
     if (isWin(board) === true) showWin();
   } else if (targetClasses.contains('field') && targetClasses.contains('busy')) {
     clickBusyCell(targetData.col, targetData.row);
-    if (cellCopy.value !== '') event.target.classList.add('focus');
+    if (cellCopy.value !== '') {
+      event.target.classList.add('focus');     
+    };
   };
 });
 
